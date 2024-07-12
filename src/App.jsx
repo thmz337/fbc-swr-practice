@@ -4,7 +4,7 @@ import "./App.css";
 const fetcher = (url, headers) =>
   fetch(url, { headers })
     .then((res) => res.json())
-    .then((json) => json.description);
+    .then((json) => json);
 
 function App() {
   const url = "https://httpstat.us/200?sleep=2000";
@@ -17,7 +17,7 @@ function App() {
   if (error) return <div>Failed to load.</div>;
   if (isLoading) return <div>Loading...</div>;
 
-  return <>{data && <p>Status : {data}</p>}</>;
+  return <>{data.description && <p>Status : {data.description}</p>}</>;
 }
 
 export default App;
